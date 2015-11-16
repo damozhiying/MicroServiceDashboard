@@ -1,0 +1,7 @@
+server:
+  port: ${port:8084}
+---
+spring:
+  profiles: prod
+server:
+  port: ${port:80}
