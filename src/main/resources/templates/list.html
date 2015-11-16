@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout">
+<head>
+    <title>Micro Service List :: Actuator Dashboard</title>
+</head>
+<body>
+
+<div layout:fragment="content" class="container">
+
+    <div class="card-group">
+        <div class="card">
+            <div class="card-header">
+                Micro Services list
+            </div>
+            <div class="card-block">
+                <table id="latest" class="table table-hover table-sm">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Load</th>
+                        <th>Uptime</th>
+                        <th>Instance Uptime</th>
+                        <th>Processors</th>
+                        <th>Memory</th>
+                        <th>Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="service : ${services}">
+                        <td th:text="${service.name}">name</td>
+                        <td th:text="${service.systemLoad}">system load</td>
+                        <td th:text="${service.uptime}">uptime</td>
+                        <td th:text="${service.instanceUptime}">intance uptime</td>
+                        <td th:text="${service.processors}">processors</td>
+                        <td>
+                            <progress class="progress" value="75" max="100"
+                                      th:value="${service.memory}"
+                                      th:text="${service.memory}">~</progress>
+                        </td>
+                        <td th:text="${#dates.format(service.updatedOn, 'HH:mm, dd MMM yyyy')}">date</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <!--<script type="text/javascript">-->
+        <!--var socket = new SockJS('/ws');-->
+        <!--stompClient = Stomp.over(socket);-->
+        <!--stompClient.connect({}, function(frame) {-->
+            <!--stompClient.subscribe('/project/latest', function(message){-->
+                <!--var data = JSON.parse(message.body);-->
+                <!--var table = $('table#latest tbody');-->
+
+                <!--var rows = [];-->
+                <!--$.each(data, function(index, value){-->
+                    <!--rows.push('<tr><td>' + value.name + '</td><td>' + value.description + '</td></tr>');-->
+                <!--});-->
+
+                <!--table.html(rows);-->
+            <!--});-->
+
+            <!--stompClient.subscribe('/project/popular', function(message){-->
+                <!--var data = JSON.parse(message.body);-->
+                <!--var table = $('table#popular tbody');-->
+
+                <!--var rows = [];-->
+                <!--$.each(data, function(index, value){-->
+                    <!--rows.push('<tr><td>' + value.name + '</td><td>' + value.description + '</td><td>' + value.views + '</td></tr>');-->
+                <!--});-->
+
+                <!--table.html(rows);-->
+            <!--});-->
+        <!--});-->
+
+    <!--</script>-->
+
+</body>
+</html>
