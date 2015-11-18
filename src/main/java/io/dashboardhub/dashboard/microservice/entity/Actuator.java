@@ -1,6 +1,7 @@
 package io.dashboardhub.dashboard.microservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,14 +10,25 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Actuator {
 
-    private String name;
-    private Integer memoryTotal;
-    private Integer memoryFree;
-    private Integer processors;
-    private Integer uptime;
-    private Integer instanceUptime;
-    private Double systemLoad;
-    private Date updatedOn;
+    private String name = "";
+
+    @JsonProperty("mem")
+    private Integer memoryTotal = 0;
+
+    @JsonProperty("mem.free")
+    private Integer memoryFree = 0;
+
+    private Integer processors = 0;
+
+    private Integer uptime = 0;
+
+    @JsonProperty("instance.uptime")
+    private Integer instanceUptime = 0;
+
+    @JsonProperty("systemload.average")
+    private Double systemLoad = 0.0;
+
+    private Date updatedOn = new Date();
 
     Actuator() {
     }
