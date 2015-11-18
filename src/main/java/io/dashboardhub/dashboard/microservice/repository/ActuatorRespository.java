@@ -15,8 +15,8 @@ public class ActuatorRespository {
 
     private static final Logger log = LoggerFactory.getLogger(ActuatorRespository.class);
 
-    public Actuator getService() {
-        Actuator actuator = restTemplate.getForObject("http://localhost:8082/metrics", Actuator.class);
+    public Actuator getService(String host) {
+        Actuator actuator = restTemplate.getForObject(host, Actuator.class);
 
         log.debug(actuator.toString());
 

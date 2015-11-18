@@ -1,8 +1,11 @@
 
 * [x] List with dummy data
-* [ ] Make API call (sync)
-* [ ] Move which API to call to Config (array)
-* [ ] Poll API & Push to UI with WebSockets
+* [x] Make single API call (sync)
+* [x] Move which API to call to Config (array)
+* [x] Make multiple API call (sync)
 * [ ] Make API calls Async
-* [ ]
+* [ ] Poll (schedule) API & Push to UI with WebSockets
+* [ ] Documentation
+    * [ ] configuration
+    * [ ] setup
 * [ ]

@@ -30,7 +30,7 @@
                     <tbody>
                     <tr th:each="service : ${services}">
                         <td th:text="${service.name}">name</td>
-                        <td th:text="${service.systemLoad}">system load</td>
+                        <td th:text="${#numbers.formatDecimal(service.systemLoad,1,2)}">system load</td>
                         <td th:text="${service.uptime}">uptime</td>
                         <td th:text="${service.instanceUptime}">intance uptime</td>
                         <td th:text="${service.processors}">processors</td>

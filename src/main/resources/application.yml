@@ -1,5 +1,17 @@
 server:
   port: ${port:8084}
+
+app:
+  services:
+    - http://localhost:8082/metrics
+
+logging:
+  level:
+    io:
+      dashboardhub:
+        dashboard:
+          microservice: DEBUG
+
 ---
 spring:
   profiles: prod
