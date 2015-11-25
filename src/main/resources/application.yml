@@ -5,6 +5,11 @@ app:
   services:
     - http://localhost:8082/metrics
     - http://localhost:8082/metrics
+  async:
+    name: ActuatorExecutor
+    corePoolSize: 7
+    maxPoolSize: 20
+    queueCapacity: 20
 
 logging:
   level:
