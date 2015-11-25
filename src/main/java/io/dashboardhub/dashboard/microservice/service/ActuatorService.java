@@ -1,6 +1,6 @@
 package io.dashboardhub.dashboard.microservice.service;
 
-import io.dashboardhub.dashboard.microservice.Config.ServicesConfig;
+import io.dashboardhub.dashboard.microservice.Config.ServicesParametersConfig;
 import io.dashboardhub.dashboard.microservice.entity.Actuator;
 import io.dashboardhub.dashboard.microservice.repository.ActuatorRespository;
 import org.slf4j.Logger;
@@ -18,7 +18,7 @@ import java.util.concurrent.Future;
 public class ActuatorService {
 
     @Autowired
-    private ServicesConfig servicesConfig;
+    private ServicesParametersConfig servicesParametersConfig;
 
     @Autowired
     private ActuatorRespository actuatorRespository;
@@ -27,16 +27,15 @@ public class ActuatorService {
 
     public List<Actuator> getServices() {
         List<Future<Actuator>> serviceFutures = new ArrayList<Future<Actuator>>();
-        for (Iterator<String> host = servicesConfig.getServices().iterator(); host.hasNext(); ) {
-            String url = host.next();
-            serviceFutures.add(actuatorRespository.getService(url));
-            log.debug("Request to host made: " + url);
+        for (String host : this.servicesParametersConfig.getServices()) {
+            serviceFutures.add(actuatorRespository.getService(host));
+            log.debug("Request to host made: " + host);
         }
 
         List<Actuator> services = new ArrayList<Actuator>();
-        for (Iterator<Future<Actuator>> service = serviceFutures.iterator(); service.hasNext(); ) {
+        for (Future<Actuator> service : serviceFutures) {
             try {
-                services.add(service.next().get());
+                services.add(service.get());
             } catch (Exception e) {
                 log.error("Request to host failed");
             }

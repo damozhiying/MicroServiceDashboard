@@ -10,7 +10,7 @@ import java.util.List;
 @Data
 @Component
 @ConfigurationProperties("app")
-public class ServicesConfig {
+public class ServicesParametersConfig {
 
     private List<String> services = new ArrayList<String>();
 
