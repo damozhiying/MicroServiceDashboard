@@ -33,9 +33,8 @@ public class Actuator {
     Actuator() {
     }
 
-    public Actuator(String name, Date updatedOn) {
+    public Actuator(String name) {
         this.name = name;
-        this.updatedOn = updatedOn;
     }
 
     public Integer getMemory() {
@@ -45,8 +44,8 @@ public class Actuator {
 
         Integer memoryUsed = memoryTotal - memoryFree;
 
-        Integer percentage = (int) (memoryUsed * 100.0f) / memoryTotal;
+        Float percentage = (memoryUsed * 100.0f) / memoryTotal;
 
-        return percentage;
+        return percentage.intValue();
     }
 }
