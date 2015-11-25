@@ -5,6 +5,7 @@
 * [x] Make multiple API call (sync)
 * [x] Make API calls Async
 * [x] Move AsyncConfig to config yml file
+* [x] Interfaces
 * [ ] Poll (schedule) API & Push to UI with WebSockets
 * [ ] Unit testing
 * [ ] BDD testing

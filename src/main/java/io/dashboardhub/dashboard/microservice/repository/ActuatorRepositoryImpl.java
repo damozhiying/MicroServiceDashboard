@@ -12,12 +12,12 @@ import org.springframework.web.client.RestTemplate;
 import java.util.concurrent.Future;
 
 @Repository
-public class ActuatorRespository {
+public class ActuatorRepositoryImpl implements ActuatorRepository {
 
     @Autowired
     RestTemplate restTemplate;
 
-    private static final Logger log = LoggerFactory.getLogger(ActuatorRespository.class);
+    private static final Logger log = LoggerFactory.getLogger(ActuatorRepository.class);
 
     @Async
     public Future<Actuator> getService(String host) {
