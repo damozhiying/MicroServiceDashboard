@@ -6,7 +6,7 @@
 * [x] Make API calls Async
 * [x] Move AsyncConfig to config yml file
 * [x] Interfaces
-* [ ] Poll (schedule) API & Push to UI with WebSockets
+* [x] Poll (schedule) API & Push to UI with WebSockets
 * [ ] Unit testing
 * [ ] BDD testing
 * [ ] Deploy & Use ENV vars for services config?
@@ -16,5 +16,6 @@
     
 ---
     
+* [ ] Red row if host unavailable
 * [ ] Clientside - reconnect websocket attempt on failure
 * [ ]

@@ -1,5 +1,6 @@
 package io.dashboardhub.dashboard.microservice.repository;
 
+import io.dashboardhub.dashboard.microservice.Config.ServicesParametersConfig;
 import io.dashboardhub.dashboard.microservice.entity.Actuator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,8 +21,10 @@ public class ActuatorRepositoryImpl implements ActuatorRepository {
     private static final Logger log = LoggerFactory.getLogger(ActuatorRepository.class);
 
     @Async
-    public Future<Actuator> getService(String host) {
-        Actuator actuator = restTemplate.getForObject(host, Actuator.class);
+    public Future<Actuator> getService(ServicesParametersConfig.Service service) {
+        Actuator actuator = restTemplate.getForObject(service.getHost(), Actuator.class);
+        actuator.setId(service.getId());
+        actuator.setHost(service.getHost());
 
         log.debug(actuator.toString());
 

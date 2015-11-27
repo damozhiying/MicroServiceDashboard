@@ -3,8 +3,8 @@ server:
 
 app:
   services:
-    - http://localhost:8082/metrics
-    - http://localhost:8082/metrics
+    - { id: DashboardService, host: "http://localhost:8082/metrics" }
+    - { id: MicroServiceDashboard, host: "http://localhost:8084/metrics" }
   async:
     name: ActuatorExecutor
     corePoolSize: 7

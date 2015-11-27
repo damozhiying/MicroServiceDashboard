@@ -12,9 +12,16 @@ import java.util.List;
 @ConfigurationProperties("app")
 public class ServicesParametersConfig {
 
-    private List<String> services = new ArrayList<String>();
+    private List<Service> services = new ArrayList<Service>();
 
-    public List<String> getServices() {
+    public List<Service> getServices() {
         return this.services;
+    }
+
+    @Data
+    public static class Service {
+
+        private String id;
+        private String host;
     }
 }

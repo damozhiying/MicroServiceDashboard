@@ -18,28 +18,26 @@
                 <table class="table table-hover table-sm">
                     <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Host</th>
                         <th>Load</th>
                         <th>Uptime</th>
-                        <th>Instance Uptime</th>
                         <th>Processors</th>
                         <th>Memory</th>
-                        <th>Date</th>
+                        <th>Memory</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr th:each="service : ${services}">
-                        <td th:text="${service.name}">name</td>
-                        <td th:text="${#numbers.formatDecimal(service.systemLoad,1,2)}">system load</td>
-                        <td th:text="${service.uptime}">uptime</td>
-                        <td th:text="${service.instanceUptime}">intance uptime</td>
-                        <td th:text="${service.processors}">processors</td>
-                        <td>
-                            <progress class="progress" value="75" max="100"
+                        <td class="id" th:text="${service.id}" th:id="${service.id}" th:title="${service.host}">~</td>
+                        <td class="systemLoad" th:text="${#numbers.formatDecimal(service.systemLoad,1,2)}">~</td>
+                        <td class="uptime">~</td>
+                        <td class="processors" th:text="${service.processors}">~</td>
+                        <td class="memory-progress">
+                            <progress class="progress" value="0" max="100"
                                       th:value="${service.memory}"
-                                      th:text="${service.memory}">~</progress>
+                            th:text="${service.memory}">~</progress>
                         </td>
-                        <td th:text="${#dates.format(service.updatedOn, 'HH:mm, dd MMM yyyy')}">date</td>
+                        <td class="memory-text" th:text="${service.memory + '%'}">~</td>
                     </tr>
                     </tbody>
                 </table>
@@ -53,15 +51,16 @@
         stompClient.connect({}, function(frame) {
             stompClient.subscribe('/actuators/latest', function(message){
                 var data = JSON.parse(message.body);
-                console.log(data);
-//                var table = $('table tbody');
-//
-//                var rows = [];
-//                $.each(data, function(index, value){
-//                    rows.push('<tr><td>' + value.name + '</td><td>' + value.systemLoad + '</td><td>' + value.uptime + '</td><td>' + value.instanceUptime + '</td><td>' + value.processors + '</td></tr>');
-//                });
-//
-//                table.html(rows);
+
+                $.each(data, function(index, value){
+                    var row = $('table tbody tr td#' + value.id).parent();
+                    row.find('td.id').text(value.id).attr('title', value.host);
+                    row.find('td.sytemLoad').text(value.systemLoad);
+                    row.find('td.uptime').text(jQuery.timeago(new Date().getTime() - value.uptime));
+                    row.find('td.processors').text(value.processors);
+                    row.find('td.memory-progress progress').val(value.memory).text(value.memory);
+                    row.find('td.memory-text').text(value.memory + '%');
+                });
             });
         });
 

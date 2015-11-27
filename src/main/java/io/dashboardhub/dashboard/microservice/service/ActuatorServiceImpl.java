@@ -26,9 +26,9 @@ public class ActuatorServiceImpl implements ActuatorService {
 
     public List<Actuator> getServices() {
         List<Future<Actuator>> serviceFutures = new ArrayList<Future<Actuator>>();
-        for (String host : this.servicesParametersConfig.getServices()) {
-            serviceFutures.add(actuatorRespository.getService(host));
-            log.debug("Request to host made: " + host);
+        for (ServicesParametersConfig.Service service : this.servicesParametersConfig.getServices()) {
+            serviceFutures.add(actuatorRespository.getService(service));
+            log.debug("Request to host made: " + service.getHost());
         }
 
         List<Actuator> services = new ArrayList<Actuator>();
