@@ -3,7 +3,8 @@ server:
 
 app:
   services:
-    - { id: MicroServiceDashboard, host: "http://localhost:8084/metrics" }
+    - id: MicroServiceDashboard
+      host: "http://localhost:8084/metrics"
   async:
     name: ActuatorExecutor
     corePoolSize: 7
@@ -24,4 +25,5 @@ server:
   port: ${port:80}
 app:
   services:
-    - { id: ${SERVICE_ID_DEFAULT}, host: ${SERVICE_HOST_DEFAULT} }
+    - id: ${SERVICE_ID_DEFAULT}
+      host: ${SERVICE_HOST_DEFAULT}
