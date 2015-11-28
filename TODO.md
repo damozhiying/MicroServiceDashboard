@@ -7,6 +7,7 @@
 * [x] Move AsyncConfig to config yml file
 * [x] Interfaces
 * [x] Poll (schedule) API & Push to UI with WebSockets
+* [ ] Document config & screenshot to README
 * [ ] Unit testing
 * [ ] BDD testing
 * [ ] Deploy & Use ENV vars for services config?
