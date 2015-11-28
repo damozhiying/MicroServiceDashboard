@@ -20,7 +20,7 @@ logging:
 
 ---
 spring:
-  profiles: prod
+  profiles: production
 server:
   port: ${port:80}
 app:
