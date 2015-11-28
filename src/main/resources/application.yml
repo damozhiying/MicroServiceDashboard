@@ -3,7 +3,7 @@ server:
 
 app:
   services:
-    - { id: MicroServiceDashboard, host: "http://localhost/metrics" }
+    - { id: MicroServiceDashboard, host: "/metrics" }
   async:
     name: ActuatorExecutor
     corePoolSize: 7
