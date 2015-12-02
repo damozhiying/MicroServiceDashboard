@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <title>MicroService Dashboard</title>
+    <link rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}"
+          href="../../css/bootstrap.min.css"/>
+    <link rel="stylesheet"
+          th:href="@{/css/styles.css}"
+          href="../../css/styles.css"/>
+
+    <script type="text/javascript"
+            th:href="@{/js/sockjs-1.0.0.min.js}"
+            src="../../js/sockjs-1.0.0.min.js">
+    </script>
+    <script type="text/javascript"
+            th:href="@{/js/stomp-2.3.3.min.js}"
+            src="../../js/stomp-2.3.3.min.js">
+    </script>
+    <script type="text/javascript"
+            th:href="@{/js/jquery-2.1.4.min.js}"
+            src="../../js/jquery-2.1.4.min.js">
+    </script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="alert alert-warning" role="alert">
+        <strong>Prototype v0.0.1</strong> Monitor the status of all your MicroServices
+    </div>
+
+    <div class="alert alert-danger" role="alert" th:if="${error != null}">
+        <strong>Error!</strong> <span th:text="${error}"></span>
+    </div>
+
+    <div layout:fragment="content">
+        Layout
+    </div>
+</div>
+
+</body>
+</html>
