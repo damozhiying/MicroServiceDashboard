@@ -2,6 +2,11 @@
 
 UI for Spring Boot Actuator Metrics - List your micro services and statistics
 
+## Features
+
+* Async / parallel calls to all your Actuator Microservices
+* Websockets push to UI
+
 ![Screenshot of Dashboard](docs/screenshots/dashboard.png)
 
 ## Deployment
