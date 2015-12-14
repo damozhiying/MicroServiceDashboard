@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/DashboardHub/MicroServiceDashboard.svg?branch=feature%2Funit-testing)](https://travis-ci.org/DashboardHub/MicroServiceDashboard)
+
 # Dashboard for Spring Boot MicroServices and Actuator information
 
 UI for Spring Boot Actuator Metrics - List your micro services and statistics
